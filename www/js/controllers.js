@@ -40,9 +40,23 @@ angular.module('starter.controllers', [])
     { title: 'Dubstep', id: 3 },
     { title: 'Indie', id: 4 },
     { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
+    { title: 'Cowbell', id: 6 },
+    { title: 'Ukulele', id:7 }
   ];
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
+})
+
+.controller('MapCtrl', function($scope, $stateParams) {
+
+      var map;
+
+      require(["esri/map", "dojo/domReady!"], function(Map) {
+        map = new Map("map", {
+          basemap: "topo",
+          center: [-122.45, 37.75], // longitude, latitude
+          zoom: 13
+        });
+      });
 });
