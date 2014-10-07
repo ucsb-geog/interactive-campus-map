@@ -17,7 +17,7 @@ angular.module('starter.controllers', [])
   };
 
   // Open the login modal
-  $scope.login = function() {
+  $scope.search = function() {
     $scope.modal.show();
   };
 
