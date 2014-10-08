@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.mytestapp595005" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>myTestApp</name>
+  <name>UCSB Interactive Campus Map</name>
   <description>
-        An Ionic Framework and Cordova project.
+        An Interactive Campus Map application for the University of California, Santa Barbara.
     </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+  <author email="icm@geog.ucsb.edu" href="http://geog.ucsb.edu/">
+      UCSB Geography Department
     </author>
   <content src="index.html"/>
   <access origin="*"/>

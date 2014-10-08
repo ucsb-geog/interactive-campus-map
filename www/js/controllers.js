@@ -49,7 +49,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('MapCtrl', function($scope, $stateParams) {
-require([
+    require([
         "dojo/parser",
         "dojo/ready",
         "dijit/layout/BorderContainer",
@@ -77,31 +77,32 @@ require([
 
         parser.parse();
 
-arcgisUtils.arcgisUrl = arcgisUtils.arcgisUrl.replace("file:", "http:");
+        arcgisUtils.arcgisUrl = arcgisUtils.arcgisUrl.replace("file:", "http:");
 
-        arcgisUtils.createMap("4778fee6371d4e83a22786029f30c7e1","map").then(function(response){
+      arcgisUtils.createMap("4778fee6371d4e83a22786029f30c7e1","map").
+      then(function(response){
           //update the app
-          dom.byId("title").innerHTML = response.itemInfo.item.title;
-          dom.byId("subtitle").innerHTML = response.itemInfo.item.snippet;
+          //dom.byId("title").innerHTML = response.itemInfo.item.title;
+          //dom.byId("subtitle").innerHTML = response.itemInfo.item.snippet;
 
           var map = response.map;
 
 
 
           //add the scalebar
-          var scalebar = new Scalebar({
-            map: map,
-            scalebarUnit: "english"
-          });
+          //var scalebar = new Scalebar({
+          //  map: map,
+          //  scalebarUnit: "english"
+          //});
 
           //add the legend. Note that we use the utility method getLegendLayers to get
           //the layers to display in the legend from the createMap response.
-          var legendLayers = arcgisUtils.getLegendLayers(response);
-          var legendDijit = new Legend({
-            map: map,
-            layerInfos: legendLayers
-          },"legend");
-          legendDijit.startup();
+          //var legendLayers = arcgisUtils.getLegendLayers(response);
+          //var legendDijit = new Legend({
+          //  map: map,
+          //  layerInfos: legendLayers
+          //},"legend");
+          //legendDijit.startup();
 
 
         });
