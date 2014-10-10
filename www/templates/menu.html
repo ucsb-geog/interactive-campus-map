@@ -7,28 +7,22 @@
     <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
   </ion-pane>
 
-  <ion-side-menu side="left">
+  <ion-side-menu side="left" expose-aside-when="large">
     <header class="bar bar-header bar-stable">
+      <button ng-click="showTopLevelCategories()" ng-class="{ hide: hideSidemenuBackButton }" class="button back-button button-icon icon ion-arrow-left-c button back-button button-icon icon ion-arrow-left-c"  type="backType" label="backLabel" icon="backIcon" style="">Back</button>
       <h1 class="title">Menu</h1>
     </header>
     <ion-content class="has-header">
-      <ion-list>
-        <ion-item nav-clear menu-close ng-click="search()">
-          Search
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/browse">
-          Browse
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/parking">
-          Parking
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/poi">
-          Points of Interest
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/sustainability">
-          Sustainability
-        </ion-item>
-      </ion-list>
+            <ion-list>
+                <ion-item nav-clear menu-close ng-click="search()">
+                  Search
+                </ion-item>
+                <div ng-repeat="category in categories">
+                    <!-- displayed only 2 levels of nested categories, other levels are in the subcategories filter triggered by "Refine" button -->
+                    <ion-item nav-clear ng-if="category.taxons.length > 0 && category.is_first_level" ng-click="showSubcategories(category)">{{category.name}}</ion-item>
+                    <ion-item nav-clear ng-if="category.taxons.length == 0 || !category.is_first_level" href="#/category/{{category.id}}">{{category.name}}</ion-item>
+                </div>
+            </ion-list>
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>

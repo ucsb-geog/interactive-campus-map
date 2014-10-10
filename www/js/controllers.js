@@ -31,6 +31,51 @@ angular.module('starter.controllers', [])
       $scope.closeLogin();
     }, 1000);
   };
+
+
+
+
+// Nested Menu
+// Based on Codepen: http://codepen.io/anon/pen/fpCyl?editors=101
+$scope.hideSidemenuBackButton = true;
+    var topLevelCategories;
+
+    topLevelCategories = $scope.categories = [
+      {id: 1, name: 'Layers', taxons: [
+        {id: 4, name: '1. Child of First: 2st level', taxons: [], is_first_level: false},
+        {id: 5, name: '2. Child of First: 2st level', taxons: [], is_first_level: false},
+        {id: 6, name: '3. Child of First: 2st level', taxons: [], is_first_level: false}
+      ], is_first_level: true},
+      {id: 2, name: 'Find Parking', taxons: [
+        {id: 7, name: '1. Child of Second: 2st level', taxons: [], is_first_level: false},
+        {id: 8, name: '2. Child of Second: 2st level', taxons: [], is_first_level: false}
+      ], is_first_level: true},
+      {id: 3, name: 'Explore Sustainability', taxons: [
+        {id: 9, name: '2. Child of Third: 2st level', taxons: [], is_first_level: false}
+      ], is_first_level: true}
+    ];
+
+    var getByParentId = function(id) {
+      for (var i in topLevelCategories) {
+        if (topLevelCategories[i].id == id) {
+          return topLevelCategories[i].taxons;
+        }
+      }
+    }
+
+    $scope.toggleCategories = function() {
+        $scope.sideMenuController.toggleLeft();
+    };
+
+    $scope.showSubcategories = function(category) {
+        $scope.categories = getByParentId(category.id);
+        $scope.hideSidemenuBackButton = false;
+    };
+
+    $scope.showTopLevelCategories = function () {
+        $scope.categories = topLevelCategories;
+        $scope.hideSidemenuBackButton = true;
+    };
 })
 
 .controller('PlaylistsCtrl', function($scope) {
@@ -90,10 +135,10 @@ angular.module('starter.controllers', [])
 
 
           //add the scalebar
-          //var scalebar = new Scalebar({
-          //  map: map,
-          //  scalebarUnit: "english"
-          //});
+          var scalebar = new Scalebar({
+            map: map,
+            scalebarUnit: "english"
+          });
 
           //add the legend. Note that we use the utility method getLegendLayers to get
           //the layers to display in the legend from the createMap response.
