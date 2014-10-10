@@ -1,6 +1,33 @@
+angular.module('starter.services', [])
+
+/**
+ * A simple example service that returns some data.
+ */
+.factory('Layers', function() {
+  // Might use a resource here that returns a JSON array
+
+  // Some fake testing data
+  var layers = [
+    { id: 0, name: 'Esri Tapestry', webmap_id: '4778fee6371d4e83a22786029f30c7e1' },
+    { id: 1, name: 'Second Map', webmap_id: '4778fee6371d4e83a22786029f30c7e1' }
+  ];
+
+  return {
+    all: function() {
+      return layers;
+    },
+    get: function(layerId) {
+      // Simple index lookup
+      return layers[layerId];
+    }
+  }
+});
+
+
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+
   // Form data for the login modal
   $scope.loginData = {};
 
@@ -35,65 +62,58 @@ angular.module('starter.controllers', [])
 
 
 
-// Nested Menu
-// Based on Codepen: http://codepen.io/anon/pen/fpCyl?editors=101
-$scope.hideSidemenuBackButton = true;
-    var topLevelCategories;
+  // Nested Menu
+  // Based on Codepen: http://codepen.io/anon/pen/fpCyl?editors=101
+  $scope.hideSidemenuBackButton = true;
+  var topLevelCategories;
 
-    topLevelCategories = $scope.categories = [
-      {id: 1, name: 'Layers', taxons: [
-        {id: 4, name: '1. Child of First: 2st level', taxons: [], is_first_level: false},
-        {id: 5, name: '2. Child of First: 2st level', taxons: [], is_first_level: false},
-        {id: 6, name: '3. Child of First: 2st level', taxons: [], is_first_level: false}
-      ], is_first_level: true},
-      {id: 2, name: 'Find Parking', taxons: [
-        {id: 7, name: '1. Child of Second: 2st level', taxons: [], is_first_level: false},
-        {id: 8, name: '2. Child of Second: 2st level', taxons: [], is_first_level: false}
-      ], is_first_level: true},
-      {id: 3, name: 'Explore Sustainability', taxons: [
-        {id: 9, name: '2. Child of Third: 2st level', taxons: [], is_first_level: false}
-      ], is_first_level: true}
-    ];
+  topLevelCategories = $scope.categories = [
+    {id: 1, name: 'Layers', taxons: [
+      {id: 4, name: '1. Child of First: 2st level', taxons: [], is_first_level: false},
+      {id: 5, name: '2. Child of First: 2st level', taxons: [], is_first_level: false},
+      {id: 6, name: '3. Child of First: 2st level', taxons: [], is_first_level: false}
+    ], is_first_level: true},
+    {id: 2, name: 'Find Parking', taxons: [
+      {id: 7, name: '1. Child of Second: 2st level', taxons: [], is_first_level: false},
+      {id: 8, name: '2. Child of Second: 2st level', taxons: [], is_first_level: false}
+    ], is_first_level: true},
+    {id: 3, name: 'Explore Sustainability', taxons: [
+      {id: 9, name: '2. Child of Third: 2st level', taxons: [], is_first_level: false}
+    ], is_first_level: true}
+  ];
 
-    var getByParentId = function(id) {
-      for (var i in topLevelCategories) {
-        if (topLevelCategories[i].id == id) {
-          return topLevelCategories[i].taxons;
-        }
+  var getByParentId = function(id) {
+    for (var i in topLevelCategories) {
+      if (topLevelCategories[i].id == id) {
+        return topLevelCategories[i].taxons;
       }
     }
+  }
 
-    $scope.toggleCategories = function() {
-        $scope.sideMenuController.toggleLeft();
-    };
+  $scope.toggleCategories = function() {
+      $scope.sideMenuController.toggleLeft();
+  };
 
-    $scope.showSubcategories = function(category) {
-        $scope.categories = getByParentId(category.id);
-        $scope.hideSidemenuBackButton = false;
-    };
+  $scope.showSubcategories = function(category) {
+      $scope.categories = getByParentId(category.id);
+      $scope.hideSidemenuBackButton = false;
+  };
 
-    $scope.showTopLevelCategories = function () {
-        $scope.categories = topLevelCategories;
-        $scope.hideSidemenuBackButton = true;
-    };
+  $scope.showTopLevelCategories = function () {
+      $scope.categories = topLevelCategories;
+      $scope.hideSidemenuBackButton = true;
+  };
 })
 
 .controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 },
-    { title: 'Ukulele', id:7 }
-  ];
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 })
 
-.controller('MapCtrl', function($scope, $stateParams) {
+.controller('MapCtrl', function($scope, $stateParams, Layers) {
+
+    $scope.layers = Layers.all();
 
     require([
         "dojo/parser",
