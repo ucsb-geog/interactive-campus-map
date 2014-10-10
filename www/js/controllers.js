@@ -32,7 +32,7 @@ angular.module('starter.controllers', [])
   $scope.loginData = {};
 
   // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
+  $ionicModal.fromTemplateUrl('templates/search.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
@@ -151,11 +151,13 @@ angular.module('starter.controllers', [])
 
         var popup = new PopupMobile(null, document.createElement("div"));
 
-        arcgisUtils.createMap("4778fee6371d4e83a22786029f30c7e1","map", {
-            mapOptions: { center: [-119.8481, 34.4125],
-            zoom: 11
-        }}).
-        then(function(response){
+        arcgisUtils.createMap("df8bcc10430f48878b01c96e907a1fc3","map", {
+            mapOptions: {
+        //        center: [-119.8481, 34.4125],
+        //        zoom: 11
+              }
+        })
+        .then(function(response){
           //update the app
           //dom.byId("title").innerHTML = response.itemInfo.item.title;
           //dom.byId("subtitle").innerHTML = response.itemInfo.item.snippet;
