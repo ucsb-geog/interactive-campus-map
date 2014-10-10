@@ -94,6 +94,7 @@ $scope.hideSidemenuBackButton = true;
 })
 
 .controller('MapCtrl', function($scope, $stateParams) {
+
     require([
         "dojo/parser",
         "dojo/ready",
@@ -105,6 +106,7 @@ $scope.hideSidemenuBackButton = true;
         "esri/arcgis/utils",
         "esri/dijit/Legend",
         "esri/dijit/Scalebar",
+        "esri/dijit/PopupMobile",
         "dojo/domReady!"
       ], function(
         parser,
@@ -116,21 +118,31 @@ $scope.hideSidemenuBackButton = true;
         urlUtils,
         arcgisUtils,
         Legend,
-        Scalebar
+        Scalebar,
+        PopupMobile,
+        domConstruct
       ) {
         ready(function(){
 
         parser.parse();
 
+
         arcgisUtils.arcgisUrl = arcgisUtils.arcgisUrl.replace("file:", "http:");
 
-      arcgisUtils.createMap("4778fee6371d4e83a22786029f30c7e1","map").
-      then(function(response){
+        var popup = new PopupMobile(null, document.createElement("div"));
+
+        arcgisUtils.createMap("4778fee6371d4e83a22786029f30c7e1","map", {
+            mapOptions: { center: [-119.8481, 34.4125],
+            zoom: 11
+        }}).
+        then(function(response){
           //update the app
           //dom.byId("title").innerHTML = response.itemInfo.item.title;
           //dom.byId("subtitle").innerHTML = response.itemInfo.item.snippet;
 
           var map = response.map;
+
+          map.setInfoWindow(popup);
 
 
 
