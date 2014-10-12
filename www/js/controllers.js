@@ -69,9 +69,8 @@ angular.module('starter.controllers', [])
 
   topLevelCategories = $scope.categories = [
     {id: 1, name: 'Layers', taxons: [
-      {id: 4, name: '1. Child of First: 2st level', taxons: [], is_first_level: false},
-      {id: 5, name: '2. Child of First: 2st level', taxons: [], is_first_level: false},
-      {id: 6, name: '3. Child of First: 2st level', taxons: [], is_first_level: false}
+      {id: '4778fee6371d4e83a22786029f30c7e1', name: 'Esri Tapestry Map', taxons: [], is_first_level: false},
+      {id: 'df8bcc10430f48878b01c96e907a1fc3', name: 'US Wildfire Map', taxons: [], is_first_level: false}
     ], is_first_level: true},
     {id: 2, name: 'Find Parking', taxons: [
       {id: 7, name: '1. Child of Second: 2st level', taxons: [], is_first_level: false},
@@ -144,17 +143,28 @@ angular.module('starter.controllers', [])
       ) {
         ready(function(){
 
+        var webmap;
+
         parser.parse();
 
+        var webmap = '';
+        if ($stateParams['mapId'] == '' || typeof $stateParams['mapId'] === 'undefined') {
+          console.log('No webmap specified. Loading default map.');
+          webmap = $scope.layers['0'].webmap_id;
+        }
+        else {
+          webmap = $stateParams['mapId'];
+        }
 
         arcgisUtils.arcgisUrl = arcgisUtils.arcgisUrl.replace("file:", "http:");
 
         var popup = new PopupMobile(null, document.createElement("div"));
 
-        arcgisUtils.createMap("df8bcc10430f48878b01c96e907a1fc3","map", {
+        arcgisUtils.createMap(webmap,"map", {
             mapOptions: {
         //        center: [-119.8481, 34.4125],
         //        zoom: 11
+                  infoWindow: popup
               }
         })
         .then(function(response){
@@ -163,10 +173,6 @@ angular.module('starter.controllers', [])
           //dom.byId("subtitle").innerHTML = response.itemInfo.item.snippet;
 
           var map = response.map;
-
-          map.setInfoWindow(popup);
-
-
 
           //add the scalebar
           var scalebar = new Scalebar({

@@ -31,7 +31,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })
 
     .state('app.map', {
-      url: "/map",
+      url: "/map/:mapId",
       views: {
         'menuContent' :{
           templateUrl: "templates/map.html",
@@ -39,6 +39,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     });
+
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/map');
+  $urlRouterProvider.otherwise('/app/map/');
 });

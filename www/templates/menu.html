@@ -20,7 +20,7 @@
                 <div ng-repeat="category in categories">
                     <!-- displayed only 2 levels of nested categories, other levels are in the subcategories filter triggered by "Refine" button -->
                     <ion-item nav-clear ng-if="category.taxons.length > 0 && category.is_first_level" ng-click="showSubcategories(category)">{{category.name}}</ion-item>
-                    <ion-item nav-clear ng-if="category.taxons.length == 0 || !category.is_first_level" href="#/category/{{category.id}}">{{category.name}}</ion-item>
+                    <ion-item nav-clear ng-if="category.taxons.length == 0 || !category.is_first_level" href="#/app/map/{{category.id}}">{{category.name}}</ion-item>
                 </div>
             </ion-list>
     </ion-content>
