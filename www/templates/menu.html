@@ -14,7 +14,7 @@
     </header>
     <ion-content class="has-header">
             <ion-list>
-                <ion-item nav-clear menu-close ng-click="search()">
+                <ion-item nav-clear menu-close ng-class="{ hide: !hideSidemenuBackButton }" ng-click="search()">
                   Search
                 </ion-item>
                 <div ng-repeat="category in categories">
