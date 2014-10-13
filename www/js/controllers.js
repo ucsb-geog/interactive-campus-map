@@ -62,6 +62,7 @@ angular.module('starter.controllers', [])
     }, 1000);
   };
 
+  
 
 
 
@@ -112,6 +113,7 @@ angular.module('starter.controllers', [])
       $scope.categories = topLevelCategories;
       $scope.hideSidemenuBackButton = true;
   };
+  // End Nested Menu
 })
 
 .controller('PlaylistsCtrl', function($scope) {
