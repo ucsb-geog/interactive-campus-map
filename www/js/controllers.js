@@ -9,8 +9,11 @@ angular.module('starter.services', [])
 
   // Some fake testing data
   var layers = [
-    { name: 'Esri Tapestry', webmap_id: '4778fee6371d4e83a22786029f30c7e1' },
-    { name: 'US Wildfire Map', webmap_id: 'df8bcc10430f48878b01c96e907a1fc3' }
+    {webmap_id: 'df8bcc10430f48878b01c96e907a1fc3', name: 'US Wildfire Map'},
+    {webmap_id: '4778fee6371d4e83a22786029f30c7e1', name: 'Esri Tapestry Map'},
+    {webmap_id: '2f5a28f82f4d41ec8dbe6cf96375a970', name: 'Hurricane and Cycle Web Map'},
+    {webmap_id: '72c523c47ae241f0821f21773eb20709', name: 'Current Ocean Conditions'},
+    {webmap_id: 'd16d53126f1243a3a7a7f1d0dff39662', name: 'Severe Weather Web Map'}
   ];
 
   return {
@@ -27,9 +30,9 @@ angular.module('starter.services', [])
 
 
 // Angular Controllers
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['starter.services'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, Layers) {
 
   // Form data for the login modal
   $scope.loginData = {};
@@ -62,58 +65,11 @@ angular.module('starter.controllers', [])
     }, 1000);
   };
 
-  
+
+  // Nested Menu using angularui router
+  $scope.layers = Layers.all();
 
 
-
-  // Nested Menu
-  // Based on Codepen: http://codepen.io/anon/pen/fpCyl?editors=101
-  $scope.hideSidemenuBackButton = true;
-  var topLevelCategories;
-
-  topLevelCategories = $scope.categories = [
-    {id: 1, name: 'Layers', taxons: [
-      {id: '4778fee6371d4e83a22786029f30c7e1', name: 'Esri Tapestry Map', taxons: [], is_first_level: false},
-      {id: 'df8bcc10430f48878b01c96e907a1fc3', name: 'US Wildfire Map', taxons: [], is_first_level: false},
-      {id: '8a567ebac15748d39a747649a2e86cf4', name: 'True Geography of London Underground', taxons: [], is_first_level: false},
-      {id: '3d355e34cbd3405dbb3f031286f7b39b', name: 'LANDSAT8 Daily Planet Imagery', taxons: [], is_first_level: false},
-      {id: '2f5a28f82f4d41ec8dbe6cf96375a970', name: 'Hurricane and Cycle Web Map', taxons: [], is_first_level: false},
-      {id: '72c523c47ae241f0821f21773eb20709', name: 'Current Ocean Conditions', taxons: [], is_first_level: false},
-      {id: 'd16d53126f1243a3a7a7f1d0dff39662', name: 'Severe Weather Web Map', taxons: [], is_first_level: false},
-      {id: '29d59c8a3536471da8233471a92116ad', name: 'Subscription Required', taxons: [], is_first_level: false},
-      {id: '8483d89e59904728b54f187b462a442c', name: 'Subscription Required', taxons: [], is_first_level: false}
-    ], is_first_level: true},
-    {id: 2, name: 'Find Parking', taxons: [
-      {id: 7, name: '1. Child of Second: 2st level', taxons: [], is_first_level: false},
-      {id: 8, name: '2. Child of Second: 2st level', taxons: [], is_first_level: false}
-    ], is_first_level: true},
-    {id: 3, name: 'Explore Sustainability', taxons: [
-      {id: 9, name: '2. Child of Third: 2st level', taxons: [], is_first_level: false}
-    ], is_first_level: true}
-  ];
-
-  var getByParentId = function(id) {
-    for (var i in topLevelCategories) {
-      if (topLevelCategories[i].id == id) {
-        return topLevelCategories[i].taxons;
-      }
-    }
-  }
-
-  $scope.toggleCategories = function() {
-      $scope.sideMenuController.toggleLeft();
-  };
-
-  $scope.showSubcategories = function(category) {
-      $scope.categories = getByParentId(category.id);
-      $scope.hideSidemenuBackButton = false;
-  };
-
-  $scope.showTopLevelCategories = function () {
-      $scope.categories = topLevelCategories;
-      $scope.hideSidemenuBackButton = true;
-  };
-  // End Nested Menu
 })
 
 .controller('PlaylistsCtrl', function($scope) {
