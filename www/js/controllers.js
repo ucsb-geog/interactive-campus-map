@@ -1,3 +1,4 @@
+// Angular Services
 angular.module('starter.services', [])
 
 /**
@@ -8,8 +9,8 @@ angular.module('starter.services', [])
 
   // Some fake testing data
   var layers = [
-    { id: 0, name: 'Esri Tapestry', webmap_id: '4778fee6371d4e83a22786029f30c7e1' },
-    { id: 1, name: 'US Wildfire Map', webmap_id: 'df8bcc10430f48878b01c96e907a1fc3' }
+    { name: 'Esri Tapestry', webmap_id: '4778fee6371d4e83a22786029f30c7e1' },
+    { name: 'US Wildfire Map', webmap_id: 'df8bcc10430f48878b01c96e907a1fc3' }
   ];
 
   return {
@@ -22,8 +23,10 @@ angular.module('starter.services', [])
     }
   }
 });
+// End Angular Services
 
 
+// Angular Controllers
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
@@ -70,7 +73,14 @@ angular.module('starter.controllers', [])
   topLevelCategories = $scope.categories = [
     {id: 1, name: 'Layers', taxons: [
       {id: '4778fee6371d4e83a22786029f30c7e1', name: 'Esri Tapestry Map', taxons: [], is_first_level: false},
-      {id: 'df8bcc10430f48878b01c96e907a1fc3', name: 'US Wildfire Map', taxons: [], is_first_level: false}
+      {id: 'df8bcc10430f48878b01c96e907a1fc3', name: 'US Wildfire Map', taxons: [], is_first_level: false},
+      {id: '8a567ebac15748d39a747649a2e86cf4', name: 'True Geography of London Underground', taxons: [], is_first_level: false},
+      {id: '3d355e34cbd3405dbb3f031286f7b39b', name: 'LANDSAT8 Daily Planet Imagery', taxons: [], is_first_level: false},
+      {id: '2f5a28f82f4d41ec8dbe6cf96375a970', name: 'Hurricane and Cycle Web Map', taxons: [], is_first_level: false},
+      {id: '72c523c47ae241f0821f21773eb20709', name: 'Current Ocean Conditions', taxons: [], is_first_level: false},
+      {id: 'd16d53126f1243a3a7a7f1d0dff39662', name: 'Severe Weather Web Map', taxons: [], is_first_level: false},
+      {id: '29d59c8a3536471da8233471a92116ad', name: 'Subscription Required', taxons: [], is_first_level: false},
+      {id: '8483d89e59904728b54f187b462a442c', name: 'Subscription Required', taxons: [], is_first_level: false}
     ], is_first_level: true},
     {id: 2, name: 'Find Parking', taxons: [
       {id: 7, name: '1. Child of Second: 2st level', taxons: [], is_first_level: false},
