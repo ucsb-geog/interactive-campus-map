@@ -1,27 +1,13 @@
-<ion-side-menus>
-
-  <ion-pane ion-side-menu-content>
-    <ion-nav-bar class="bar-stable nav-title-slide-ios7">
-      <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>
-    </ion-nav-bar>
-    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
-  </ion-pane>
-
-  <ion-side-menu side="left" expose-aside-when="large">
-    <header class="bar bar-header bar-stable">
-      <h1 class="title">Menu</h1>
-    </header>
-    <ion-content class="has-header">
-            <ion-list class="item-icon-right">
-              <ion-item nav-clear menu-close  ng-click="search()">Search<i class="icon ion-search"></i></ion-item>
-              <ion-item nav-clear>Available Maps<i class="icon ion-chevron-right"></i></ion-item>
-              <ion-item nav-clear>Parking<i class="icon ion-chevron-right"></i></ion-item>
-              <ion-item nav-clear menu-close>Help / Information<i class="icon ion-help"></i></ion-item>
-            </ion-list>
-            <ion-list class="item-icon-right">
-                <ion-item class="item-divider" nav>Popular Maps</ion-item>
-                <ion-item nav-clear menu-close ng-repeat="layer in layers" href="#/app/map/{{layer.webmap_id}}">{{layer.name}}<i class="icon ion-map"></i></ion-item>
-            </ion-list>
-    </ion-content>
-  </ion-side-menu>
-</ion-side-menus>
+<ion-view>
+<header class="bar bar-header bar-stable">
+  <h1 class="title">Menu</h1>
+</header>
+<ion-content class="has-header">
+        <ion-list class="item-icon-right">
+          <ion-item nav-clear menu-close  ng-click="search()">Search<i class="icon ion-search"></i></ion-item>
+          <ion-item nav-clear ui-sref="app.submenu">Available Maps<i class="icon ion-chevron-right"></i></ion-item>
+          <ion-item nav-clear>Parking<i class="icon ion-chevron-right"></i></ion-item>
+          <ion-item nav-clear menu-close>Help / Information<i class="icon ion-help"></i></ion-item>
+        </ion-list>
+</ion-content>
+</ion-view>

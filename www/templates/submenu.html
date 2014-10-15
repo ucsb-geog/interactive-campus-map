@@ -1,0 +1,10 @@
+<ion-view>
+<header class="bar bar-header bar-stable">
+  <h1 class="title">Layers</h1>
+</header>
+<ion-content class="has-header">
+        <ion-list class="item-icon-right">
+            <ion-item nav-clear menu-close ng-repeat="layer in layers" href="#/app/map/{{layer.webmap_id}}">{{layer.name}}<i class="icon ion-map"></i></ion-item>
+        </ion-list>
+</ion-content>
+</ion-view>

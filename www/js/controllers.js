@@ -72,9 +72,9 @@ angular.module('starter.controllers', ['starter.services'])
 
 })
 
-.controller('MapCtrl', function($scope, $stateParams, Layers) {
+.controller('MenuCtrl', function($scope, $stateParams, Layers){})
 
-    $scope.layers = Layers.all();
+.controller('MapCtrl', function($scope, $stateParams, Layers) {
 
     require([
         "dojo/parser",
@@ -112,7 +112,7 @@ angular.module('starter.controllers', ['starter.services'])
         var webmap = '';
         if ($stateParams['mapId'] == '' || typeof $stateParams['mapId'] === 'undefined') {
           console.log('No webmap specified. Loading default map.');
-          webmap = $scope.layers['0'].webmap_id;
+          webmap = $scope.layers[0].webmap_id;
         }
         else {
           webmap = $stateParams['mapId'];
