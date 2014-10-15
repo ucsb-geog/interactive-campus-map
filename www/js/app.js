@@ -48,10 +48,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     .state('app.submenu', {
       url: '/submenu',
       views: {
-        'content-view' :{
-          templateUrl: "templates/map.html",
-          controller: 'MapCtrl'
-        },
         'side-view': {
           templateUrl: 'templates/subMenu.html',
           controller: 'MenuCtrl'
