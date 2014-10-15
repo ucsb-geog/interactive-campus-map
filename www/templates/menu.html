@@ -1,11 +1,8 @@
-<ion-view>
-<header class="bar bar-header bar-stable">
-  <h1 class="title">Menu</h1>
-</header>
+<ion-view title="Menu">
 <ion-content class="has-header">
         <ion-list class="item-icon-right">
           <ion-item nav-clear menu-close  ng-click="search()">Search<i class="icon ion-search"></i></ion-item>
-          <ion-item nav-clear ui-sref="app.submenu">Available Maps<i class="icon ion-chevron-right"></i></ion-item>
+          <ion-item nav-clear href="#/app/submenu/maps">Available Maps<i class="icon ion-chevron-right"></i></ion-item>
           <ion-item nav-clear>Parking<i class="icon ion-chevron-right"></i></ion-item>
           <ion-item nav-clear menu-close>Help / Information<i class="icon ion-help"></i></ion-item>
         </ion-list>

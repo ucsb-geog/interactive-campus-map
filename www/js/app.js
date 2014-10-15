@@ -45,8 +45,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
+    .state('app.menu', {
+      url: '/menu',
+      views: {
+        'side-view': {
+          templateUrl: 'templates/menu.html',
+          controller: 'MenuCtrl'
+        }
+      }
+    })
+
     .state('app.submenu', {
-      url: '/submenu',
+      url: '/submenu/:menuId',
       views: {
         'side-view': {
           templateUrl: 'templates/subMenu.html',
