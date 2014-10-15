@@ -72,7 +72,9 @@ angular.module('starter.controllers', ['starter.services'])
 
 })
 
-.controller('MenuCtrl', function($scope, $stateParams, Layers){})
+.controller('MenuCtrl', function($scope, $stateParams, Layers){
+  $scope.menuId = $stateParams['menuId'];
+})
 
 .controller('MapCtrl', function($scope, $stateParams, Layers) {
 

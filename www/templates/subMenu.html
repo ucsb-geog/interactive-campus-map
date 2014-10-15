@@ -1,7 +1,7 @@
 <ion-view title="{{menuId}}">
-	<ion-nav-buttons side="left">
-		<button class="button button-clear" ui-sref="app.menu">Back</button>
-	</ion-nav-buttons>
+  <ion-nav-buttons side="left">
+    <button class="button button-clear" ui-sref="app.menu">Back</button>
+  </ion-nav-buttons>
   <ion-content class="has-header">
           <ion-list class="item-icon-right">
               <ion-item nav-clear menu-close ng-repeat="layer in layers" href="#/app/map/{{layer.webmap_id}}">{{layer.name}}<i class="icon ion-map"></i></ion-item>
