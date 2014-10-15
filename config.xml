@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="edu.ucsb.geog.icm" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>UCSB Interactive Campus Map</name>
-  <description>
-        An Interactive Campus Map application for the University of California, Santa Barbara.
-    </description>
-  <author email="icm@geog.ucsb.edu" href="http://geog.ucsb.edu/">
-      UCSB Geography Department
-    </author>
+  <description>An Interactive Campus Map application for the University of California, Santa Barbara</description>
+  <author email="icm@geog.ucsb.edu" href="http://geog.ucsb.edu/">UCSB Geography Department</author>
   <content src="index.html"/>
   <access origin="*"/>
   <preference name="webviewbounce" value="false"/>

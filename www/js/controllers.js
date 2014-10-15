@@ -72,12 +72,6 @@ angular.module('starter.controllers', ['starter.services'])
 
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-})
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-})
-
 .controller('MapCtrl', function($scope, $stateParams, Layers) {
 
     $scope.layers = Layers.all();
