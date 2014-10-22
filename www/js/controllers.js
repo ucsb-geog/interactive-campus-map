@@ -9,6 +9,7 @@ angular.module('starter.services', [])
 
   // Some fake testing data
   var layers = [
+    {webmap_id: 'e0e7bef0c399413f81dd3db96410bb35', name: 'UCSB Basemap'},
     {webmap_id: 'df8bcc10430f48878b01c96e907a1fc3', name: 'US Wildfire Map'},
     {webmap_id: '4778fee6371d4e83a22786029f30c7e1', name: 'Esri Tapestry Map'},
     {webmap_id: '2f5a28f82f4d41ec8dbe6cf96375a970', name: 'Hurricane and Cycle Web Map'},
